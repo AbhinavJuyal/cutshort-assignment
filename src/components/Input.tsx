@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 
 type InputProps = {
   label: string;
@@ -29,7 +29,7 @@ const Input = ({
   };
 
   return (
-    <div className="w-full flex flex-col mb-6">
+    <div className="w-full flex flex-col mb-6 rounded-lg">
       <label htmlFor={id} className="text-black text-base font-semibold mb-2">
         {label}
       </label>

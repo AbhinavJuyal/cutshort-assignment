@@ -34,27 +34,29 @@ const initialState: FormValue = {
   },
 };
 
+const getKey = (val: number): string => `step${val + 1}`;
+
 const OnBoarding = () => {
   const [step, setStep] = useState<number>(0);
   const [form, setForm] = useState<FormValue>(initialState);
 
-  useEffect(() => {
-    console.log(form);
-  }, [form]);
-
   const changeStep = (val: number) => {
+    const { filled } = form[getKey(val)];
+    if (!filled) {
+      return;
+    }
     setStep(val);
   };
 
   const updateForm = (step: number, data: any) => {
     setForm((prev) => ({
       ...prev,
-      [`step${step + 1}`]: { ...data, filled: true },
+      [getKey(step)]: { ...data, filled: true },
     }));
     setStep((prev) => (step >= totalSteps ? prev : prev + 1));
   };
 
-  const key = `step${step + 1}`;
+  const key = getKey(step);
   const steps: JSX.Element[] = [
     <OnBoardingStep1 data={form[key]} step={step} updateForm={updateForm} />,
     <OnBoardingStep2 data={form[key]} step={step} updateForm={updateForm} />,

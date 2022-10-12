@@ -1,19 +1,9 @@
-/***
- * {
-        background: "#ffffff",
-        primary: "#202532",
-        secondary: "#9ca3b4",
-        active: "#7073e5",
-        outline: "#eef2f7",
-      },
- */
-
 import { useEffect, useState } from "react";
 import Input from "../Input";
 
 const LabelText = () => {
   return (
-    <div className="h-14 flex justify-center items-center bg-outline px-4">
+    <div className="h-14 flex justify-center items-center bg-outline px-4 rounded-l-lg">
       <span className="block text-secondary font-semibold">www.eden.com/</span>
     </div>
   );
